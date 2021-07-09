@@ -46,8 +46,4 @@ npm test
 
 If you have any questions about the repo, open an issue or contact me directly at scotty.d.phillips@gmail.com. You can find more of my work at https://github.com/scottydphillips
 
-
-
-
-	
-
+Link to Demonstration Video: https://youtu.be/52oC4732rw4
