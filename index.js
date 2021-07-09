@@ -63,11 +63,11 @@ let badgeSelector = () => {
 	if (res.license === choicesArray[0]) {
 	badge = `![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)`;
 } else if (res.license === choicesArray[1]) {
-	badge = `![License: Apache 2.0]()`
+	badge = `![License: Apache 2.0](https://img.shields.io/badge/License-Apache%202.0-blue.svg)`
 } else if (res.license === choicesArray[2]) {
-	badge = `![License: GPL 3.0]()`
+	badge = `![License: GPL 3.0](https://img.shields.io/badge/License-GPLv3-blue.svg)](https://www.gnu.org/licenses/gpl-3.0)`
 } else if (res.license === choicesArray[3]) {
-	badge = `![BSD 3]()`
+	badge = `![BSD 3](https://img.shields.io/badge/License-BSD%203--Clause-blue.svg)`
 } else {
 	badge = `No license utilized`
 } return badge;
@@ -95,14 +95,30 @@ ${badgeSelector()}
 To install necessary dependencies, run the following command:
 ...
 npm i
+...
 
+## Usage
 
+${res.knowledge}
 
+## License
 
+This project is licensed under the ${res.license} license
 
+## Contributing
 
+${res.contribution}
 
+## Tests
 
+To run tests, run the following command:
+...
+npm test
+...
+
+## Questions
+
+If you have any questions about the repo, open an issue or contact me directly at ${res.email}. You can find more of my work at https://github.com/${res.username}
 
 
 
