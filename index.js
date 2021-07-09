@@ -2,7 +2,7 @@
 const inquirer = require('inquirer');
 const fs = require('fs');
 const util = require('util');
-const generateMarkdown = require('./utils/generateMarkdown.js')
+
 
 
 // TODO: Create an array of questions for user input
@@ -31,7 +31,7 @@ const questions = [
 		type: 'list',
 		message: 'What kind of license should your project have?',
 		name: 'license',
-		choices: ['MIT','Apache 2.0','GPl 3.0','BSD 3','None']
+		choices: ['MIT','Apache 2.0','GPL 3.0','BSD 3','None']
 	},
 	{
 		type: '',
@@ -55,25 +55,69 @@ const questions = [
 	}
 ];
 
-let userPrompt = () => inquirer.prompt(questions);
-
-// TODO: Create a function to write README file
-function writeToFile('README.md', data) {
-	console.log(data)
+let userPrompt = () => inquirer.prompt(questions)
+	.then((res) => {
+		console.log(res)
+let badgeSelector = () => {
+	let choicesArray = ['MIT','Apache 2.0','GPL 3.0','BSD 3','None']
+	if (res.license === choicesArray[0]) {
+	badge = `![License: MIT](https://img.shields.io/badge/License-MIT-blue.svg)`;
+} else if (res.license === choicesArray[1]) {
+	badge = `![License: Apache 2.0]()`
+} else if (res.license === choicesArray[2]) {
+	badge = `![License: GPL 3.0]()`
+} else if (res.license === choicesArray[3]) {
+	badge = `![BSD 3]()`
+} else {
+	badge = `No license utilized`
+} return badge;
 }
+	const generateMkdn = `# ${res.project}
 
-// TODO: Create a function to initialize app
-function init() {
-	try {
-		const answers = await userPrompt();
-		const generateContent = generateMarkdown(answers);
-		await writeFileAsync (./dist/REAMDE.md, generateContent);
-		console.log("REAMDE is generated!");
-	}
-	catch(err) {
-		console.error(err);
-	}
-}
+${badgeSelector()}
 
-// Function call to initialize app
-init();
+## Table of Contents
+
+*[Installation](#installation)
+
+*[Usage](#usage)
+
+*[License](#license)
+
+*[Contributing](#contributing)
+
+*[Tests](#tests)
+
+*[Questions](#questions)
+
+## Installation
+
+To install necessary dependencies, run the following command:
+...
+npm i
+
+
+
+
+
+
+
+
+
+
+
+
+	
+
+`
+fs.writeFile("README.md", generateMkdn, err => {
+	if (err) {
+		console.error(err)
+		return;
+	}
+	console.log("README wrriten successfully! Huzzah!")
+	}
+);
+});
+
+userPrompt();
